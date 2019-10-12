@@ -1,0 +1,40 @@
+{
+  "connection": "default",
+  "collectionName": "restaurants",
+  "info": {
+    "name": "restaurants",
+    "description": "Restaurant Listings"
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "name": {
+      "unique": true,
+      "required": true,
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": true
+    },
+    "categories": {
+      "collection": "category",
+      "via": "restaurants"
+    },
+    "restaurant_hours": {
+      "group": "hours_of_operation",
+      "type": "group",
+      "required": true,
+      "repeatable": true
+    }
+  }
+}
